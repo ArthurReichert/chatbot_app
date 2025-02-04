@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 
 class ChatProvider with ChangeNotifier{
   // Claude api service
-  final _apiService = ClaudeApiService(apiKey: "YOUR_API_KEY");
+  final _apiService = ClaudeApiService(apiKey: const String.fromEnvironment('ANTHROPIC_API_KEY'));
 
   // Messages & Loading...
   final List<Message> _messages = [];

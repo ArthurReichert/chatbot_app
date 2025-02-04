@@ -11,9 +11,9 @@ import 'package:http/http.dart' as http;
 class ClaudeApiService {
 
   //API Constants
-  static const String _baseUrl = "https://api.antropic.com/v1/messages";
+  static const String _baseUrl = "https://api.anthropic.com/v1/messages";
   static const String _apiVersion = '2023-06-01';
-  static const String _model = 'claude-3-opus-20240229';
+  static const String _model = 'claude-3-opus';
   static const int _maxTokens = 1024;
 
   // Store the API key securely
@@ -30,8 +30,10 @@ class ClaudeApiService {
 
   Future<String> sendMessage(String content) async {
     try{
+      // Create a client that accepts all certificates (apenas para desenvolvimento)
+      final client = http.Client();
       // Make POST request to Claude API
-      final response = await http.post(
+      final response = await client.post(
         Uri.parse(_baseUrl),
         headers: _getHeaders(),
         body: _getRequestBody(content),
@@ -56,8 +58,8 @@ class ClaudeApiService {
   // create required headers for Claude API
   Map<String, String> _getHeaders() => {
     'Content-Type': 'application/json',
-    'x-api-key': _apiKey,
-    'antropic-version': _apiVersion,
+    'anthropic-api-key': _apiKey,
+    'anthropic-version': _apiVersion,
   };
 
   //format request body  according to Claude API specs

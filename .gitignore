@@ -21,16 +21,21 @@ migrate_working_dir/
 # is commented out by default.
 #.vscode/
 
+# Arquivos de ambiente
+.env
+.env.local
+.env.*
+
 # Flutter/Dart/Pub related
 **/doc/api/
 **/ios/Flutter/.last_build_id
+/build/
 .dart_tool/
 .flutter-plugins
 .flutter-plugins-dependencies
 .packages
 .pub-cache/
 .pub/
-/build/
 
 # Symbolication related
 app.*.symbols
